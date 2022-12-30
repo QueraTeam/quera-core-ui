@@ -1,7 +1,10 @@
+"use strict";
 // https://chakra-ui.com/docs/styled-system/features/semantic-tokens
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.semanticTokens = void 0;
 // chakra will generate a css variable for every semantic token. For example:
 // css variable generated for `colors: { border.gray }` is `--chakra-colors-border-gray`.
-export var semanticTokens = {
+exports.semanticTokens = {
     colors: {
         "border.gray": {
             default: "gray.300",
@@ -25,3 +28,4 @@ export var semanticTokens = {
         },
     },
 };
+//# sourceMappingURL=semantictokens.js.map

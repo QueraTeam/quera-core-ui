@@ -1,4 +1,7 @@
-export var zIndices = {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.zIndices = void 0;
+exports.zIndices = {
     hide: -1,
     auto: "auto",
     base: 0,
@@ -13,3 +16,4 @@ export var zIndices = {
     toast: 1700,
     tooltip: 1800,
 };
+//# sourceMappingURL=z-index.js.map

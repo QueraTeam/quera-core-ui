@@ -1,12 +1,14 @@
+"use strict";
 // This component is created by Quera Team.
-import { mode } from "@chakra-ui/theme-tools";
-
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Card = void 0;
+const theme_tools_1 = require("@chakra-ui/theme-tools");
 const parts = ["card", "header", "row", "body", "footer", "button"];
-const baseStyle = function (props) { return ({
+const baseStyle = (props) => ({
     card: {
         boxShadow: "base",
         borderRadius: ["unset", null, "xl"],
-        bg: mode("white", "gray.700")(props),
+        bg: (0, theme_tools_1.mode)("white", "gray.700")(props),
     },
     row: {},
     header: {},
@@ -16,7 +18,7 @@ const baseStyle = function (props) { return ({
         width: "full",
         borderTopRadius: 0,
     },
-}); };
+});
 const sizes = {
     sm: {
         row: {
@@ -67,7 +69,7 @@ const sizes = {
         },
     },
 };
-export var Card = {
+exports.Card = {
     parts,
     baseStyle,
     sizes,
@@ -75,3 +77,4 @@ export var Card = {
         size: "lg",
     },
 };
+//# sourceMappingURL=card.js.map
