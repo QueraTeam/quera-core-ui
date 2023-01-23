@@ -1,9 +1,10 @@
 // Default: https://github.com/jeanverster/chakra-ui-steps/blob/main/src/theme/index.ts
 
+import { ComponentStyleConfig } from "@chakra-ui/react";
 import { mode, StyleFunctionProps } from "@chakra-ui/theme-tools";
 import { StepsStyleConfig } from "chakra-ui-steps";
 
-export const Steps = {
+export const Steps: ComponentStyleConfig = {
   ...StepsStyleConfig,
   baseStyle: (props: StyleFunctionProps) => {
     const { colorScheme: c } = props;

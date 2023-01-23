@@ -1,3 +1,6 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.fonts = void 0;
 const defaultFont = [
     "IRANYekan",
     "Tahoma",
@@ -8,4 +11,5 @@ const defaultFont = [
     "'Segoe UI Symbol'",
     "'Noto Color Emoji'",
 ].join(", ");
-export var fonts = { body: defaultFont, heading: defaultFont };
+exports.fonts = { body: defaultFont, heading: defaultFont };
+//# sourceMappingURL=fonts.js.map

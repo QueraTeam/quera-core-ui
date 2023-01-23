@@ -1,6 +1,10 @@
+"use strict";
 // This component is created by Quera Team.
-export var Pagination = {
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Pagination = void 0;
+exports.Pagination = {
     baseStyle: {
         justifyContent: "center",
     },
 };
+//# sourceMappingURL=pagination.js.map
