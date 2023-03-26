@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "module": "Commonjs",
+    "target": "es2015",
     "outDir": "./dist",
     "rootDir": "./src",
     "declaration": true,
@@ -14,5 +18,6 @@
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*", "next-env.d.ts", "images.d.ts"],
+  "exclude": ["node_modules", ".next", "out", "storybook-static"]
 }

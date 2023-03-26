@@ -10,27 +10,60 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "dev:sb": "start-storybook --no-manager-cache -p 6006",
+    "build:sb": "build-storybook"
   },
   "keywords": [
     "chakra-ui",
     "theme",
-    "quera"
+    "Quera",
+    "storybook"
   ],
   "author": "me",
   "license": "ISC",
   "peerDependencies": {
-    "@chakra-ui/react": "^2.3.5",
-    "@chakra-ui/theme-tools": "^2.0.2",
-    "@emotion/react": "^11.10.4",
-    "@emotion/styled": "^11.10.4",
-    "chakra-ui-steps": "^1.8.0",
-    "framer-motion": "^6.3.16"
+    "chakra-ui-steps": "^1.7.3"
+  },
+  "dependencies": {
+    "@chakra-ui/icons": "^2.0.17",
+    "@chakra-ui/react": "^2.5.2",
+    "@chakra-ui/theme-tools": "^2.0.16",
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@mdi/js": "^7.1.96",
+    "axios": "^1.3.2",
+    "framer-motion": "^6.3.16",
+    "lodash": "^4.17.21",
+    "msw": "^1.1.1",
+    "next": "^12.2.0",
+    "npm": "^9.6.2",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "react-hook-form": "^7.43.8",
+    "react-schemaorg": "^2.0.0",
+    "react-select": "^5.7.2",
+    "schema-dts": "^1.1.2"
   },
   "devDependencies": {
-    "typescript": "^4.8.4",
+    "@chakra-ui/storybook-addon": "^4.0.16",
+    "@storybook/addon-a11y": "^6.5.16",
+    "@storybook/addon-actions": "^6.5.16",
+    "@storybook/addon-controls": "^6.5.16",
+    "@storybook/addon-essentials": "^6.5.16",
+    "@storybook/addon-interactions": "^6.5.16",
+    "@storybook/addon-links": "^6.5.16",
+    "@storybook/addon-storysource": "^6.5.16",
+    "@storybook/addon-toolbars": "^6.5.16",
+    "@storybook/addon-viewport": "^6.5.16",
+    "@storybook/builder-vite": "^0.4.2",
+    "@storybook/builder-webpack5": "^6.5.16",
+    "@storybook/manager-webpack5": "^6.5.16",
+    "@storybook/react": "^6.5.16",
+    "@svgr/webpack": "^6.5.1",
     "@typescript-eslint/eslint-plugin": "^5.11.0",
     "@typescript-eslint/parser": "^5.11.0",
+    "@vitejs/plugin-react": "^3.1.0",
     "eslint": "^8.19.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-next": "^12.1.6",
@@ -38,6 +71,18 @@
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.28.0",
-    "eslint-plugin-react-hooks": "^4.3.0"
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "eslint-plugin-storybook": "^0.6.11",
+    "msw-storybook-addon": "^1.8.0",
+    "storybook-addon-mock": "^3.2.0",
+    "storybook-addon-next": "^1.7.3",
+    "storybook-addon-next-router": "^4.0.2",
+    "tsconfig-paths-webpack-plugin": "^4.0.1",
+    "typescript": "^4.8.4",
+    "webpack": "^5.76.2",
+    "webpack-merge": "^5.8.0"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }
