@@ -1,3 +1,6 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.colors = void 0;
 const gray = {
     50: "#FAFAFA",
     100: "#F2F2F2",
@@ -34,9 +37,10 @@ const brand = {
     800: "#0076a6",
     900: "#005685",
 };
-export var colors = {
+exports.colors = {
     black: gray["900"],
     // gray,
     brand,
     defaultBackground: "#F5F8FA",
 };
+//# sourceMappingURL=colors.js.map

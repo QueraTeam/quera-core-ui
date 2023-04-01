@@ -1,11 +1,14 @@
+"use strict";
 // Default: https://github.com/chakra-ui/chakra-ui/blob/main/packages/theme/src/components/button.ts
-export var Button = {
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Button = void 0;
+exports.Button = {
     baseStyle: {
         fontWeight: "medium",
     },
     variants: {
-        outline (props) {
-            const c = props.colorScheme;
+        outline: (props) => {
+            const { colorScheme: c } = props;
             return {
                 border: "1px solid",
                 borderColor: c === "gray" ? "border.gray" : "currentColor",
@@ -31,3 +34,4 @@ export var Button = {
         },
     },
 };
+//# sourceMappingURL=button.js.map

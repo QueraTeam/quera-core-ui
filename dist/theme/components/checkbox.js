@@ -1,5 +1,8 @@
+"use strict";
 // Default: https://github.com/chakra-ui/chakra-ui/blob/main/packages/theme/src/components/checkbox.ts
-export var Checkbox = {
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Checkbox = void 0;
+exports.Checkbox = {
     baseStyle: {
         control: {
         // 1px is too thin.
@@ -7,3 +10,4 @@ export var Checkbox = {
         },
     },
 };
+//# sourceMappingURL=checkbox.js.map

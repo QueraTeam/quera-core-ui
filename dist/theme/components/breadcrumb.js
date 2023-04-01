@@ -1,5 +1,8 @@
+"use strict";
 // Default: https://github.com/chakra-ui/chakra-ui/blob/main/packages/theme/src/components/breadcrumb.ts
-export var Breadcrumb = {
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Breadcrumb = void 0;
+exports.Breadcrumb = {
     variants: {
         oneline: {
             container: {
@@ -10,3 +13,4 @@ export var Breadcrumb = {
         },
     },
 };
+//# sourceMappingURL=breadcrumb.js.map
