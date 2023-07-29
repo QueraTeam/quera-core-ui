@@ -53,7 +53,7 @@ const overrides = {
     Textarea,
     Checkbox,
     Breadcrumb,
-    Card,
+    // Card,
     Switch,
     Pagination,
     Button,
