@@ -1,2 +1,15 @@
+# Dependency directories
 node_modules/
+
+# builds
 storybook-static/
+dist/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Optional npm cache directory
+.npm
+
+# Output of 'npm pack'
+*.tgz
