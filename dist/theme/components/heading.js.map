@@ -1,1 +1,0 @@
-{"version":3,"file":"heading.js","sourceRoot":"","sources":["../../../src/theme/components/heading.ts"],"names":[],"mappings":";AAAA,qGAAqG;;;AAErG,MAAM,SAAS,GAAG;IAChB,UAAU,EAAE,QAAQ;CACrB,CAAC;AAEF,MAAM,KAAK,GAAG;IACZ,EAAE,EAAE;QACF,QAAQ,EAAE,CAAC,IAAI,EAAE,IAAI,EAAE,IAAI,EAAE,IAAI,CAAC;KACnC;CACF,CAAC;AAEW,QAAA,OAAO,GAAG;IACrB,SAAS;IACT,KAAK;CACN,CAAC"}
