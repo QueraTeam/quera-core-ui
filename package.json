@@ -12,7 +12,8 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "dev:sb": "start-storybook --no-manager-cache -p 6006",
-    "build:sb": "build-storybook"
+    "build:sb": "build-storybook",
+    "build": "tsc"
   },
   "keywords": [
     "chakra-ui",
