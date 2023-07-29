@@ -1,5 +1,5 @@
 const defaultFont = [
-  "IRANYekan",
+  // "IRANYekan",
   "Tahoma",
   "Helvetica",
   "sans-serif",
