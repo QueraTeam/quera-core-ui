@@ -1,7 +1,7 @@
 import { Card, CardBody, Heading, HStack } from "@chakra-ui/react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { AnimateCounter } from "src/components/AnimateCounter";
+import { AnimateCounter } from "src/react/AnimateCounter/AnimateCounter";
 
 export default {
   title: "Components/AnimateCounter",
