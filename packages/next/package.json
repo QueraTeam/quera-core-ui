@@ -1,7 +1,7 @@
 {
   "name": "@querateam/qui-next",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.1",
+  "description": "Next.JS ui components for Quera.org",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -27,7 +27,7 @@
   "dependencies": {
     "next": "^12.2.0",
     "npm": "^9.6.2",
-    "@querateam/qui-react": "^1.0.1"
+    "@querateam/qui-react": "1.0.3"
   },
   "devDependencies": {
     "@svgr/webpack": "^6.5.1",
