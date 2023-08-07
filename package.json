@@ -75,6 +75,7 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "eslint-plugin-storybook": "^0.6.11",
     "msw-storybook-addon": "^1.8.0",
+    "prettier": "^3.0.1",
     "storybook-addon-mock": "^3.2.0",
     "storybook-addon-next": "^1.7.3",
     "storybook-addon-next-router": "^4.0.2",
