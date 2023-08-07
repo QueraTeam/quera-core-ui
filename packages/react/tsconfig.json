@@ -5,5 +5,5 @@
     "rootDir": "./src",
     "noEmitOnError": true
   },
-  "include": ["./src/**/*", "./images.d.ts"]
+  "include": ["./src/**/*"]
 }

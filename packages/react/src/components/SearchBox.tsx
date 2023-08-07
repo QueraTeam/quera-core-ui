@@ -15,7 +15,6 @@ import { mdiMagnify, mdiClose } from "@mdi/js";
 import { useDebouncedValue } from "packages/react/src/hooks/useDebouncedValue";
 import { MdIcon } from "./MdIcon";
 import { Empty } from "./Empty";
-import defaultEmptyImage from "../../../../static/images/empty.png";
 
 interface SearchBarIconProps {
   searching: boolean;
@@ -52,7 +51,7 @@ export interface SearchBoxProps {
   searchQueryValue: string;
   onShowAllResults: () => void;
   onClearSearch: () => void;
-  customEmptyImage?: React.ReactNode;
+  emptyImage: React.ReactNode;
 }
 
 export const SearchBox = ({
@@ -63,10 +62,8 @@ export const SearchBox = ({
   searchQueryValue,
   onShowAllResults,
   onClearSearch,
-  customEmptyImage,
+  emptyImage,
 }: SearchBoxProps) => {
-  const emptyImage = customEmptyImage || <img src={defaultEmptyImage} alt="Not found" width={300} height={256} />;
-
   const [loading, setLoading] = React.useState(false);
   const resultsDisclosure = useDisclosure();
 

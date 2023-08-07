@@ -27,7 +27,7 @@
   "dependencies": {
     "next": "^12.2.0",
     "npm": "^9.6.2",
-    "@querateam/qui-react": "1.0.3"
+    "@querateam/qui-react": "1.0.6"
   },
   "devDependencies": {
     "@svgr/webpack": "^6.5.1",
