@@ -1,6 +1,7 @@
+import * as React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { HStack } from "@chakra-ui/react";
-import { SocialNetworkIcon } from "src/components/SocialNetworkIcon";
+import { SocialNetworkIcon } from "@querateam/qui-react";
 
 export default {
   title: "Foundation/SocialNetworkIcon",
@@ -24,23 +25,8 @@ export default {
 
 export const Base: ComponentStory<typeof SocialNetworkIcon> = (args) => (
   <HStack spacing={6} align="center" justify="center" minH={150}>
-    {(
-      [
-        "linkedin",
-        "facebook",
-        "github",
-        "twitter",
-        "instagram",
-        "youtube",
-        "google plus",
-      ] as const
-    ).map((type) => (
-      <SocialNetworkIcon
-        {...args}
-        type={type}
-        url="https://instagram.com/quera.ir"
-        key={type}
-      />
+    {(["linkedin", "facebook", "github", "twitter", "instagram", "youtube", "google plus"] as const).map((type) => (
+      <SocialNetworkIcon {...args} type={type} url="https://instagram.com/quera.ir" key={type} />
     ))}
   </HStack>
 );

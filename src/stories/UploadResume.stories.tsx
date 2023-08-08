@@ -1,11 +1,21 @@
+import * as React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { UploadResume } from "src/components/UploadResume";
+import { UploadResume } from "@querateam/qui-react";
 import { useForm } from "react-hook-form";
-import avatar from "../../static/images/quera.png";
 
 export default {
   title: "Components/UploadResume",
   component: UploadResume,
+  argTypes: {
+    isMobile: {
+      type: "boolean",
+      defaultValue: "false",
+    },
+    showFileSize: {
+      type: "boolean",
+      defaultValue: "true",
+    },
+  },
 } as ComponentMeta<typeof UploadResume>;
 
 export enum ResumeTypeEnum {
@@ -13,7 +23,7 @@ export enum ResumeTypeEnum {
   QCV = "QCV",
 }
 
-export const Base: ComponentStory<typeof UploadResume> = () => {
+export const Base: ComponentStory<typeof UploadResume> = (args) => {
   const { control } = useForm();
 
   return (
@@ -25,9 +35,10 @@ export const Base: ComponentStory<typeof UploadResume> = () => {
       previousFile={{ name: "رزومه یک شخص نامشخص", size: 40343 }}
       userProfile={{
         fullName: `آقای هاشمی`,
-        avatar,
+        avatar: "/images/quera.png",
         progressPercent: 30,
       }}
+      {...args}
     />
   );
 };

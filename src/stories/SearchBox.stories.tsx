@@ -1,8 +1,7 @@
+import * as React from "react";
 import { Button, HStack, Text } from "@chakra-ui/react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { ProblemIcon } from "src/components/ProblemIcon";
-import { SearchBox } from "src/components/SearchBox";
-import { persianDigits } from "src/utils/string";
+import { ProblemIcon, SearchBox, persianDigits } from "@querateam/qui-react";
 import { rest } from "msw";
 
 export default {
@@ -24,14 +23,7 @@ const renderResultItem = (result) => (
     px={4}
     overflowX="hidden"
   >
-    <HStack
-      flexGrow={1}
-      spacing={4}
-      align="stretch"
-      alignItems="center"
-      minW={0}
-      justify="space-between"
-    >
+    <HStack flexGrow={1} spacing={4} align="stretch" alignItems="center" minW={0} justify="space-between">
       <Text as="span" textOverflow="ellipsis" overflow="hidden">
         {result.name}
       </Text>
@@ -48,14 +40,27 @@ export const Base: ComponentStory<typeof SearchBox> = () => {
       .then((res) => res.json())
       .then((data) => data.problems);
 
+  const [value, setValue] = React.useState("");
+  const onShowAllResults = () => {
+    // router.push({
+    //   pathname: "/problems",
+    //   query: { search: value },
+    // });
+    console.log("show all results");
+  };
+  const onClearSearch = () => {
+    console.log("clear search");
+  };
+
   return (
     <SearchBox
       placeholder="جستجوی نام یا شماره سؤال..."
       emptyMessage="سوالی یافت نشد"
-      url="/problems"
       renderResultItem={renderResultItem}
-      searchQueryName="search"
       searchHandler={searchHandler}
+      onClearSearch={onClearSearch}
+      onShowAllResults={onShowAllResults}
+      searchQueryValue={value}
     />
   );
 };
@@ -104,8 +109,8 @@ Base.parameters = {
         res(
           ctx.json({
             problems,
-          })
-        )
+          }),
+        ),
       ),
     ],
   },

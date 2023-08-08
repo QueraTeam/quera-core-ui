@@ -1,19 +1,10 @@
+import * as React from "react";
+
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import {
-  Box,
-  Button,
-  Container,
-  Divider,
-  HStack,
-  Text,
-} from "@chakra-ui/react";
+import { Box, Button, Container, Divider, HStack, Text } from "@chakra-ui/react";
 import { mdiDomain, mdiMapMarkerOutline } from "@mdi/js";
-import { HCard } from "src/components/HCard";
-import { HiringCompanyLogo } from "src/components/HiringCompanyLogo";
-import { IconPinJob } from "src/components/PinJob";
-import { ShareLink } from "src/components/ShareLink";
-import { MdIcon } from "src/components/MdIcon";
-import { FadedTechnologyLabels } from "src/components/TechnologyLabel";
+import { HCard } from "@querateam/qui-next";
+import { HiringCompanyLogo, IconPinJob, ShareLink, MdIcon, FadedTechnologyLabels } from "@querateam/qui-react";
 
 export default {
   title: "Components/HCard",
@@ -60,20 +51,10 @@ export const StaticWithImage: ComponentStory<typeof HCard> = () => (
       }
       url="https://quera.ir"
       topCorner={
-        <HStack
-          whiteSpace="nowrap"
-          divider={<Divider orientation="vertical" h={6} />}
-          ms={3}
-          spacing={4}
-        >
+        <HStack whiteSpace="nowrap" divider={<Divider orientation="vertical" h={6} />} ms={3} spacing={4}>
           <span title="یک روز پیش">یک روز پیش</span>
           <HStack spacing={1}>
-            <ShareLink
-              url="https://quera.ir"
-              size="sm"
-              helpText="کپی لینک آگهی"
-              successText="لینک آگهی کپی شد"
-            />
+            <ShareLink url="https://quera.ir" size="sm" helpText="کپی لینک آگهی" successText="لینک آگهی کپی شد" />
             <IconPinJob pinned={false} identity="نشان کردن" size="sm" />
           </HStack>
         </HStack>
@@ -88,14 +69,10 @@ export const StaticWithImage: ComponentStory<typeof HCard> = () => (
         </HStack>
 
         <HStack spacing={[1, null, 2]}>
-          <MdIcon boxSize={[4, null, 6]} icon={mdiMapMarkerOutline} />{" "}
-          <span>تهران</span>
+          <MdIcon boxSize={[4, null, 6]} icon={mdiMapMarkerOutline} /> <span>تهران</span>
         </HStack>
       </HStack>
-      <HStack
-        color="text.pale"
-        divider={<Divider orientation="vertical" h={4} />}
-      >
+      <HStack color="text.pale" divider={<Divider orientation="vertical" h={4} />}>
         <span>Senior</span>
         <span>تمام‌وقت</span>
         <span>حقوق ۳,۰۰۰,۰۰۰ تا ۸,۰۰۰,۰۰۰</span>

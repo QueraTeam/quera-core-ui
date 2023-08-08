@@ -37,7 +37,7 @@ module.exports = {
     "react/require-default-props": "off",
     "react/jsx-filename-extension": "off",
     "react-hooks/exhaustive-deps": "warn",
-    "import/no-extraneous-dependencies": ["error", { packageDir: [".", "./packages/react", "./packages/next"] }],
+    "import/no-extraneous-dependencies": ["error", { packageDir: ["./", "./packages/react", "./packages/next"] }],
     "import/prefer-default-export": "off",
     "import/no-unresolved": "off",
     "import/extensions": "off",

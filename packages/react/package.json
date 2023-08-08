@@ -1,6 +1,6 @@
 {
   "name": "@querateam/qui-react",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "core ui components for Quera.org",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

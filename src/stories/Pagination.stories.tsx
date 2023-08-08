@@ -1,7 +1,8 @@
+import * as React from "react";
+
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 
-import { persianDigits } from "src/utils/string";
-import { Pagination } from "src/components/Pagination";
+import { persianDigits, Pagination } from "@querateam/qui-react";
 import { Card, CardBody } from "@chakra-ui/react";
 
 export default {
@@ -9,16 +10,7 @@ export default {
   component: Pagination,
   parameters: {
     controls: {
-      include: [
-        "page",
-        "total",
-        "pageSize",
-        "onPageChange",
-        "siblingRange",
-        "beginRange",
-        "endRange",
-        "renderNumber",
-      ],
+      include: ["page", "total", "pageSize", "onPageChange", "siblingRange", "beginRange", "endRange", "renderNumber"],
     },
   },
 } as ComponentMeta<typeof Pagination>;

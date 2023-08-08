@@ -1,5 +1,5 @@
 {
-  "name": "quera-core-ui",
+  "name": "@querateam/qui-storybook",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
@@ -23,9 +23,6 @@
   ],
   "author": "me",
   "license": "ISC",
-  "peerDependencies": {
-    "chakra-ui-steps": "^1.7.3"
-  },
   "dependencies": {
     "@chakra-ui/icons": "^2.0.17",
     "@chakra-ui/react": "^2.5.2",
@@ -33,7 +30,10 @@
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@mdi/js": "^7.1.96",
+    "@querateam/qui-next": "1.0.1",
+    "@querateam/qui-react": "1.0.7",
     "axios": "^1.3.2",
+    "chakra-ui-steps": "^1.7.3",
     "framer-motion": "^6.3.16",
     "lodash": "^4.17.21",
     "msw": "^1.1.1",
@@ -74,6 +74,7 @@
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
     "eslint-plugin-storybook": "^0.6.11",
+    "file-loader": "^6.2.0",
     "msw-storybook-addon": "^1.8.0",
     "prettier": "^3.0.1",
     "storybook-addon-mock": "^3.2.0",
