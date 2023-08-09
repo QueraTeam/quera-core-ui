@@ -2,11 +2,7 @@ import { ChakraProvider, Container } from "@chakra-ui/react";
 import { theme } from "../src/index";
 import { initialize, mswDecorator } from "msw-storybook-addon";
 
-initialize({
-  serviceWorker: {
-    url: "/quera-core-ui/mockServiceWorker.js",
-  },
-}); // Initialize MSW
+initialize({}); // Initialize MSW
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },

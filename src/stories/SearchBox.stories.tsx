@@ -3,6 +3,7 @@ import { Button, HStack, Text } from "@chakra-ui/react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { ProblemIcon, SearchBox, persianDigits } from "@querateam/qui-react";
 import { rest } from "msw";
+import NextImage from "next/image";
 
 export default {
   title: "Components/SearchBox",
@@ -13,7 +14,6 @@ const renderResultItem = (result) => (
   <Button
     key={result.pk}
     as="a"
-    href={result.url}
     variant="ghost"
     colorScheme="gray"
     borderRadius={0}
@@ -43,27 +43,31 @@ export const Base: ComponentStory<typeof SearchBox> = () => {
       .then((data) => data.problems);
 
   const [value, setValue] = React.useState("");
+  const [showAllResults, setIsShowingAllResults] = React.useState(false);
   const onShowAllResults = () => {
-    // router.push({
-    //   pathname: "/problems",
-    //   query: { search: value },
-    // });
-    console.log("show all results");
+    setValue(value);
+    setIsShowingAllResults(true);
   };
   const onClearSearch = () => {
-    console.log("clear search");
+    setValue("");
   };
 
   return (
-    <SearchBox
-      placeholder="جستجوی نام یا شماره سؤال..."
-      emptyMessage="سوالی یافت نشد"
-      renderResultItem={renderResultItem}
-      searchHandler={searchHandler}
-      onClearSearch={onClearSearch}
-      onShowAllResults={onShowAllResults}
-      searchQueryValue={value}
-    />
+    <>
+      <SearchBox
+        placeholder="جستجوی نام یا شماره سؤال..."
+        emptyMessage="سوالی یافت نشد"
+        renderResultItem={renderResultItem}
+        searchHandler={searchHandler}
+        onClearSearch={onClearSearch}
+        onShowAllResults={onShowAllResults}
+        searchQueryValue={value}
+        emptyImage={
+          <NextImage src="/quera-core-ui/images/empty.png" alt="Not found" width={300} height={256} quality={90} />
+        }
+      />
+      {showAllResults && <Text>Showing Search Results for {value}</Text>}
+    </>
   );
 };
 

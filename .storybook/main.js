@@ -5,10 +5,7 @@ module.exports = {
   core: {
     builder: "webpack5",
   },
-  staticDirs: [
-    { from: "../static", to: "/quera-core-ui" },
-    { from: "../public", to: "/quera-core-ui" },
-  ],
+  staticDirs: ["../static", "../public"],
   framework: "@storybook/react",
   stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
   addons: [
