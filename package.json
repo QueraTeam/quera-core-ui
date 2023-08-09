@@ -12,7 +12,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "dev:sb": "start-storybook --no-manager-cache -p 6006",
-    "build:sb": "build-storybook",
+    "build:sb": "build-storybook -o dist",
     "build": "tsc"
   },
   "keywords": [
