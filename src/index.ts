@@ -1,2 +1,2 @@
-// chakra-ui theme configs
-export { theme } from "./theme";
+export * from "@querateam/qui-react";
+export * from "@querateam/qui-next";

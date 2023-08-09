@@ -1,6 +1,6 @@
+import * as React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { UserQCVProgress } from "src/components/UserQCVProgress";
-import avatarImage from "../../static/images/quera.png";
+import { UserQCVProgress } from "@querateam/qui-react";
 
 export default {
   title: "components/UserQCVProgress",
@@ -10,9 +10,13 @@ export default {
       type: "number",
       defaultValue: 40,
     },
+    isMobile: {
+      type: "boolean",
+      defaultValue: "false",
+    },
   },
 } as ComponentMeta<typeof UserQCVProgress>;
 
 export const Base: ComponentStory<typeof UserQCVProgress> = (args) => (
-  <UserQCVProgress avatar={avatarImage} name="کوئرا" {...args} />
+  <UserQCVProgress avatar="/images/quera.png" name="کوئرا" {...args} />
 );

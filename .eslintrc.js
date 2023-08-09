@@ -37,7 +37,7 @@ module.exports = {
     "react/require-default-props": "off",
     "react/jsx-filename-extension": "off",
     "react-hooks/exhaustive-deps": "warn",
-    "import/no-extraneous-dependencies": ["error", { packageDir: __dirname }],
+    "import/no-extraneous-dependencies": ["error", { packageDir: ["./", "./packages/react", "./packages/next"] }],
     "import/prefer-default-export": "off",
     "import/no-unresolved": "off",
     "import/extensions": "off",
@@ -60,26 +60,11 @@ module.exports = {
       {
         patterns: [
           {
-            group: [
-              "react-icons/*",
-              "@react-icons/*",
-              "@mdi/react",
-              "@mdi/svg",
-              "@mdi/font",
-            ],
+            group: ["react-icons/*", "@react-icons/*", "@mdi/react", "@mdi/svg", "@mdi/font"],
             message: "Please use @/common/icons/MdIcon and @mdi/js for icons.",
           },
           {
-            group: [
-              "moment",
-              "luxon",
-              "date-fns",
-              "date-fns-jalali",
-              "@date-io",
-              "jalaali-js",
-              "dayjs",
-              "@js-joda",
-            ],
+            group: ["moment", "luxon", "date-fns", "date-fns-jalali", "@date-io", "jalaali-js", "dayjs", "@js-joda"],
             message: "Please use Temporal for working with date and time.",
           },
         ],
@@ -92,8 +77,7 @@ module.exports = {
           {
             name: "@/common/utils/string",
             importNames: ["humanizePersianDigits", "persianFloat"],
-            message:
-              'Deprecated. Use number.toLocaleString("fa-IR", options) instead.',
+            message: 'Deprecated. Use number.toLocaleString("fa-IR", options) instead.',
           },
         ],
       },

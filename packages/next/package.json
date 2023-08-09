@@ -1,0 +1,51 @@
+{
+  "name": "@querateam/qui-next",
+  "version": "1.0.1",
+  "description": "Next.JS ui components for Quera.org",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint ",
+    "lint:fix": "eslint  --fix",
+    "build": "tsc"
+  },
+  "keywords": [
+    "chakra-ui",
+    "theme",
+    "Quera",
+    "Nextjs"
+  ],
+  "author": "me",
+  "license": "ISC",
+  "peerDependencies": {
+    "chakra-ui-steps": "^1.7.3"
+  },
+  "dependencies": {
+    "next": "^12.2.0",
+    "npm": "^9.6.2",
+    "@querateam/qui-react": "1.0.6"
+  },
+  "devDependencies": {
+    "@svgr/webpack": "^6.5.1",
+    "@typescript-eslint/eslint-plugin": "^5.11.0",
+    "@typescript-eslint/parser": "^5.11.0",
+    "@vitejs/plugin-react": "^3.1.0",
+    "eslint": "^8.19.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "msw-storybook-addon": "^1.8.0",
+    "prettier": "^3.0.1",
+    "tsconfig-paths-webpack-plugin": "^4.0.1",
+    "typescript": "^4.8.4",
+    "webpack": "^5.76.2",
+    "webpack-merge": "^5.8.0"
+  }
+}

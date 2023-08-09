@@ -1,3 +1,4 @@
+import * as React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 
 import { Button, HStack } from "@chakra-ui/react";
@@ -9,19 +10,7 @@ export default {
     colorScheme: {
       control: {
         type: "select",
-        options: [
-          "brand",
-          "gray",
-          "blue",
-          "teal",
-          "cyan",
-          "purple",
-          "pink",
-          "green",
-          "red",
-          "orange",
-          "yellow",
-        ],
+        options: ["brand", "gray", "blue", "teal", "cyan", "purple", "pink", "green", "red", "orange", "yellow"],
       },
     },
     disabled: {

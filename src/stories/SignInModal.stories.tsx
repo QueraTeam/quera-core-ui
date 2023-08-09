@@ -1,9 +1,8 @@
+import * as React from "react";
+
 import { Meta } from "@storybook/react";
 import { Button, Card, CardBody, HStack } from "@chakra-ui/react";
-import {
-  SignInModalProvider,
-  useSignInModal,
-} from "src/components/SignInModalProvider";
+import { SignInModalProvider, useSignInModal } from "@querateam/qui-react";
 
 export default {
   title: "Foundation/SignIn Modal",
@@ -24,9 +23,7 @@ export const Base = () => {
     <Card>
       <CardBody>
         <HStack spacing={6} align="center" justify="center" minH={150}>
-          <Button onClick={() => signInModal.open()}>
-            نمایش مودال ثبت‌نام
-          </Button>
+          <Button onClick={() => signInModal.open()}>نمایش مودال ثبت‌نام</Button>
         </HStack>
       </CardBody>
     </Card>

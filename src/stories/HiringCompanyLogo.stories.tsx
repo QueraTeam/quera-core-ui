@@ -1,7 +1,8 @@
+import * as React from "react";
+
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { HStack } from "@chakra-ui/react";
-import { HiringCompanyLogo } from "../components/HiringCompanyLogo";
-import avatarImage from "../../static/images/quera.png";
+import { HiringCompanyLogo } from "@querateam/qui-react";
 
 export default {
   title: "Foundation/CompanyLogo",
@@ -10,19 +11,7 @@ export default {
     fairBorder: {
       control: {
         type: "select",
-        options: [
-          "brand",
-          "gray",
-          "blue",
-          "teal",
-          "cyan",
-          "purple",
-          "pink",
-          "green",
-          "red",
-          "orange",
-          "yellow",
-        ],
+        options: ["brand", "gray", "blue", "teal", "cyan", "purple", "pink", "green", "red", "orange", "yellow"],
       },
     },
     name: {
@@ -51,5 +40,5 @@ const Template: ComponentStory<typeof HiringCompanyLogo> = (args) => (
 
 export const Base = Template.bind({});
 Base.args = {
-  src: avatarImage,
+  src: "/images/quera.png",
 };

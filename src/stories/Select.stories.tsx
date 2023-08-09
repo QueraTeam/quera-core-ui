@@ -1,5 +1,7 @@
+import * as React from "react";
+
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { Select } from "src/components/Select";
+import { Select } from "@querateam/qui-react";
 
 export default {
   title: "Components/Select",
@@ -19,9 +21,7 @@ const technologies: Technology[] = [
   { label: "html", value: "html" },
 ];
 
-const Template: ComponentStory<typeof Select> = (args) => (
-  <Select options={technologies} {...args} />
-);
+const Template: ComponentStory<typeof Select> = (args) => <Select options={technologies} {...args} />;
 
 export const Base: ComponentStory<typeof Select> = Template.bind({});
 
