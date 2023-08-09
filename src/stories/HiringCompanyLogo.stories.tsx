@@ -40,5 +40,5 @@ const Template: ComponentStory<typeof HiringCompanyLogo> = (args) => (
 
 export const Base = Template.bind({});
 Base.args = {
-  src: "/images/quera.png",
+  src: "/quera-core-ui/images/quera.png",
 };

@@ -34,9 +34,11 @@ const renderResultItem = (result) => (
   </Button>
 );
 
+const GET_PROBLEMS_ENDPOINTS = "/quera-core-ui/problems";
+
 export const Base: ComponentStory<typeof SearchBox> = () => {
   const searchHandler = () =>
-    fetch(`/problems`)
+    fetch(GET_PROBLEMS_ENDPOINTS)
       .then((res) => res.json())
       .then((data) => data.problems);
 
@@ -105,7 +107,7 @@ const problems: {
 Base.parameters = {
   msw: {
     handlers: [
-      rest.get("/problems", (req, res, ctx) =>
+      rest.get(GET_PROBLEMS_ENDPOINTS, (req, res, ctx) =>
         res(
           ctx.json({
             problems,

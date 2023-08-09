@@ -15,7 +15,9 @@ export const Base: ComponentStory<typeof Empty> = () => (
       <Empty
         size={size}
         message="گشتم نبود، نگرد نیست!"
-        emptyImage={<NextImage src="/images/empty.png" alt="Not found" width={300} height={256} quality={90} />}
+        emptyImage={
+          <NextImage src="/quera-core-ui/images/empty.png" alt="Not found" width={300} height={256} quality={90} />
+        }
       />
     ))}
   </VStack>

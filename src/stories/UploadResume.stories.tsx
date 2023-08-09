@@ -35,7 +35,7 @@ export const Base: ComponentStory<typeof UploadResume> = (args) => {
       previousFile={{ name: "رزومه یک شخص نامشخص", size: 40343 }}
       userProfile={{
         fullName: `آقای هاشمی`,
-        avatar: "/images/quera.png",
+        avatar: "/quera-core-ui/images/quera.png",
         progressPercent: 30,
       }}
       {...args}

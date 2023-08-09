@@ -23,7 +23,7 @@ export default {
 export const Base: ComponentStory<typeof UserAvatar> = (args) => (
   <HStack>
     {([45, 80, 110, 145, 180] as const).map((size) => (
-      <UserAvatar key={size} size={size} src="/images/quera.png" {...args} />
+      <UserAvatar key={size} size={size} src="/quera-core-ui/images/quera.png" {...args} />
     ))}
   </HStack>
 );

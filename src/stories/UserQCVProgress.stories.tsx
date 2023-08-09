@@ -18,5 +18,5 @@ export default {
 } as ComponentMeta<typeof UserQCVProgress>;
 
 export const Base: ComponentStory<typeof UserQCVProgress> = (args) => (
-  <UserQCVProgress avatar="/images/quera.png" name="کوئرا" {...args} />
+  <UserQCVProgress avatar="/quera-core-ui/images/quera.png" name="کوئرا" {...args} />
 );
