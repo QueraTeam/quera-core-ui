@@ -48,7 +48,8 @@ export interface SearchBoxProps {
   renderResultItem: (any) => React.ReactNode;
   emptyMessage: string;
   placeholder: string;
-  searchQueryValue: string;
+  value: string;
+  setValue: React.Dispatch<React.SetStateAction<string>>;
   onShowAllResults: () => void;
   onClearSearch: () => void;
   emptyImage: React.ReactNode;
@@ -59,7 +60,8 @@ export const SearchBox = ({
   renderResultItem,
   emptyMessage,
   placeholder,
-  searchQueryValue,
+  value,
+  setValue,
   onShowAllResults,
   onClearSearch,
   emptyImage,
@@ -67,8 +69,7 @@ export const SearchBox = ({
   const [loading, setLoading] = React.useState(false);
   const resultsDisclosure = useDisclosure();
 
-  const [searchTerm, _setSearchTerm] = React.useState(searchQueryValue || "");
-  const debouncedSearchTerm = useDebouncedValue(searchTerm, 800);
+  const debouncedSearchTerm = useDebouncedValue(value, 800);
   const [searchResults, setSearchResults] = React.useState(null);
   const containerRef = React.useRef(null);
 
@@ -77,7 +78,7 @@ export const SearchBox = ({
       setLoading(true);
       resultsDisclosure.onOpen();
     }
-    _setSearchTerm(term);
+    setValue(term);
   };
 
   const onClickOutside = (event: Event) => {
@@ -104,8 +105,8 @@ export const SearchBox = ({
   const handleClearSearch = () => {
     setSearchResults(null);
     resultsDisclosure.onClose();
-    _setSearchTerm("");
-    if (searchQueryValue) {
+    setValue("");
+    if (setValue) {
       onClearSearch();
     }
   };
@@ -118,12 +119,12 @@ export const SearchBox = ({
       isInitialMount.current = false;
       return;
     }
-    if (!searchQueryValue && !resultsDisclosure.isOpen) {
+    if (!value && !resultsDisclosure.isOpen) {
       // Clear search in case of query param removal
       handleClearSearch();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchQueryValue]);
+  }, [value]);
 
   React.useEffect(() => {
     if (debouncedSearchTerm.length === 0) return;
@@ -135,7 +136,7 @@ export const SearchBox = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedSearchTerm]);
 
-  const isSearching = searchTerm.length > 0 && loading;
+  const isSearching = value.length > 0 && loading;
   const resultsIsOpen = resultsDisclosure.isOpen && debouncedSearchTerm.length > 0 && !loading;
   const finalResults = resultsIsOpen && searchResults ? searchResults : [];
 
@@ -144,11 +145,11 @@ export const SearchBox = ({
       <InputGroup zIndex="dropdown" size="lg">
         <SearchBarIcon
           searching={isSearching}
-          canClearSearch={searchTerm.length > 0}
+          canClearSearch={value.length > 0}
           handleClearSearch={handleClearSearch}
         />
         <Input
-          value={searchTerm}
+          value={value}
           onChange={(e) => setSearchTerm(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && handleShowAllResults()}
           onFocus={onFocusInput}
@@ -191,7 +192,7 @@ export const SearchBox = ({
               >
                 نمایش همه نتایج برای جستجوی{" "}
                 <Text as="strong" mx={2} color="text.brand">
-                  «{searchTerm}»
+                  «{value}»
                 </Text>
               </Button>
             )}
