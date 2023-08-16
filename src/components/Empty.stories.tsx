@@ -1,8 +1,8 @@
 import * as React from "react";
 import { VStack } from "@chakra-ui/react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { Empty } from "@querateam/qui-react";
 import NextImage from "next/image";
+import { Empty } from "./Empty";
 
 export default {
   title: "components/Empty",

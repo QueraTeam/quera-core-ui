@@ -1,6 +1,6 @@
 import * as React from "react";
 import { HStack, Link, Progress, Spacer, VStack } from "@chakra-ui/react";
-import { persianDigits } from "packages/react/src/utils/string";
+import { persianDigits } from "src/utils/string";
 
 export interface UserQCVProgressProps {
   name: string;

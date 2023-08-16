@@ -2,7 +2,7 @@ import * as React from "react";
 import { Button, HStack, Input, Spacer, Text, Link, Box, Tooltip } from "@chakra-ui/react";
 import { mdiAttachment, mdiFileEyeOutline } from "@mdi/js";
 import { ControllerRenderProps } from "react-hook-form";
-import { truncateFilename } from "packages/react/src/utils/string";
+import { truncateFilename } from "src/utils/string";
 import { MdIcon } from "./MdIcon";
 
 export interface FileInputFieldType {

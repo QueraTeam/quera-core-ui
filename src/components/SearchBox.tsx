@@ -12,7 +12,7 @@ import {
 } from "@chakra-ui/react";
 import * as React from "react";
 import { mdiMagnify, mdiClose } from "@mdi/js";
-import { useDebouncedValue } from "packages/react/src/hooks/useDebouncedValue";
+import { useDebouncedValue } from "src/hooks/useDebouncedValue";
 import { MdIcon } from "./MdIcon";
 import { Empty } from "./Empty";
 
