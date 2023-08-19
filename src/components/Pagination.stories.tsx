@@ -2,8 +2,9 @@ import * as React from "react";
 
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 
-import { persianDigits, Pagination } from "@querateam/qui-react";
 import { Card, CardBody } from "@chakra-ui/react";
+import { persianDigits } from "../utils/string";
+import { Pagination } from "./Pagination";
 
 export default {
   title: "Components/Pagination",

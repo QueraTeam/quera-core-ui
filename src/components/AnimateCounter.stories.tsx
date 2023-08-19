@@ -1,34 +1,34 @@
 import * as React from "react";
 
 import { Card, CardBody, Heading, HStack } from "@chakra-ui/react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
 
+import type { Meta, StoryObj } from "@storybook/react";
 import { AnimateCounter } from "./AnimateCounter";
 
-export default {
-  title: "Components/AnimateCounter",
+const meta: Meta<typeof AnimateCounter> = {
   component: AnimateCounter,
   decorators: [
     (Story) => (
-      <Card>
+      <Card justify="center">
         <CardBody>
-          <Story />
+          <HStack spacing={40} justify="center">
+            <Heading>
+              <Story />
+            </Heading>
+          </HStack>
         </CardBody>
       </Card>
     ),
   ],
-} as ComponentMeta<typeof AnimateCounter>;
+};
 
-export const Base: ComponentStory<typeof AnimateCounter> = () => (
-  <HStack spacing={40} justify="center">
-    <Heading>
-      <AnimateCounter time={2} value="500" />
-    </Heading>
-    <Heading>
-      <AnimateCounter time={3} value="15" />
-    </Heading>
-    <Heading>
-      <AnimateCounter time={1} value="2234" />
-    </Heading>
-  </HStack>
-);
+type Story = StoryObj<typeof AnimateCounter>;
+
+export const Primary: Story = {
+  args: {
+    value: "999",
+    time: 5,
+  },
+};
+
+export default meta;

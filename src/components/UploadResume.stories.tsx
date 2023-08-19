@@ -1,44 +1,61 @@
 import * as React from "react";
-import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { UploadResume } from "@querateam/qui-react";
-import { useForm } from "react-hook-form";
+import { StoryObj, Meta } from "@storybook/react";
+import { useForm, useFormContext } from "react-hook-form";
+import { UploadResume } from "./UploadResume";
+import { WithRHF } from "../utils/storybook";
 
-export default {
-  title: "Components/UploadResume",
+const meta: Meta<typeof UploadResume> = {
   component: UploadResume,
-  argTypes: {
-    isMobile: {
-      type: "boolean",
-      defaultValue: "false",
-    },
-    showFileSize: {
-      type: "boolean",
-      defaultValue: "true",
+  decorators: [WithRHF(false)],
+  parameters: {
+    controls: {
+      exclude: /(_.*)|(as)|(field)|(control)|(previousFile)|(resumeTypes)|(userProfile)/g,
     },
   },
-} as ComponentMeta<typeof UploadResume>;
+};
 
 export enum ResumeTypeEnum {
   UPLOAD = "CV",
   QCV = "QCV",
 }
 
-export const Base: ComponentStory<typeof UploadResume> = (args) => {
-  const { control } = useForm();
+const CompleteUploadResume = (props) => {
+  const { control } = useFormContext();
 
   return (
     <UploadResume
       field="resume"
       resumeTypes={ResumeTypeEnum}
       control={control}
-      minProgressPercent={40}
-      previousFile={{ name: "رزومه یک شخص نامشخص", size: 40343 }}
+      previousFile={{ name: "prev_file.pdf", size: 40343 }}
       userProfile={{
         fullName: `آقای هاشمی`,
         avatar: "/quera-core-ui/images/quera.png",
         progressPercent: 30,
       }}
-      {...args}
+      {...props}
     />
   );
 };
+
+export const Primary: StoryObj<typeof UploadResume> = {
+  argTypes: {
+    isMobile: {
+      control: { type: "boolean" },
+    },
+    showFileSize: {
+      control: { type: "boolean" },
+    },
+    minProgressPercent: {
+      control: { type: "number" },
+    },
+  },
+  args: {
+    isMobile: false,
+    showFileSize: true,
+    minProgressPercent: 50,
+  },
+  render: (args) => <CompleteUploadResume {...args} />,
+};
+
+export default meta;

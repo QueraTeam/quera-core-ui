@@ -1,29 +1,33 @@
 import * as React from "react";
 import { HStack } from "@chakra-ui/react";
-import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { UserAvatar } from "@querateam/qui-react";
+import { StoryObj, Meta } from "@storybook/react";
+import { UserAvatar } from "./UserAvatar";
 
-export default {
-  title: "Foundation/UserAvatar",
+const meta: Meta<typeof UserAvatar> = {
   component: UserAvatar,
+  parameters: {
+    controls: {
+      exclude: /(htmlTranslate)|(as)|(_.*)|(name)|(src)/g,
+    },
+  },
+};
+
+export const Primary: StoryObj<typeof UserAvatar> = {
+  args: {
+    src: "/images/quera.png",
+    name: "Quera",
+    circleColor: "#ff0000",
+  },
   argTypes: {
     circleColor: {
       control: {
-        type: "select",
-        options: ["brand", "gray", "blue", "teal", "cyan", "purple", "pink", "green", "red", "orange", "yellow"],
+        type: "color",
       },
     },
     name: {
-      control: "text",
-      defaultValue: "کوئرا",
+      control: { type: "text" },
     },
   },
-} as ComponentMeta<typeof UserAvatar>;
+};
 
-export const Base: ComponentStory<typeof UserAvatar> = (args) => (
-  <HStack>
-    {([45, 80, 110, 145, 180] as const).map((size) => (
-      <UserAvatar key={size} size={size} src="/quera-core-ui/images/quera.png" {...args} />
-    ))}
-  </HStack>
-);
+export default meta;

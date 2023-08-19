@@ -1,12 +1,16 @@
 import * as React from "react";
+import { StoryObj, Meta } from "@storybook/react";
+import { Select } from "./Select";
 
-import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { Select } from "@querateam/qui-react";
-
-export default {
-  title: "Components/Select",
+const meta: Meta<typeof Select> = {
   component: Select,
-} as ComponentMeta<typeof Select>;
+  parameters: {
+    controls: {
+      exclude: /options/g,
+    },
+  },
+};
+type Story = StoryObj<typeof Select>;
 
 interface Technology {
   label: string;
@@ -21,12 +25,12 @@ const technologies: Technology[] = [
   { label: "html", value: "html" },
 ];
 
-const Template: ComponentStory<typeof Select> = (args) => <Select options={technologies} {...args} />;
+export const Primary: Story = {
+  args: {
+    options: technologies,
+    isMulti: false,
+    isLoading: true,
+  },
+};
 
-export const Base: ComponentStory<typeof Select> = Template.bind({});
-
-export const Multiple: ComponentStory<typeof Select> = Template.bind({});
-Multiple.args = { isMulti: true };
-
-export const Loading: ComponentStory<typeof Select> = Template.bind({});
-Loading.args = { isLoading: true };
+export default meta;

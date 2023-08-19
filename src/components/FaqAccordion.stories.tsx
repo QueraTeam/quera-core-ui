@@ -1,12 +1,16 @@
 import * as React from "react";
 
 import { Card, CardBody } from "@chakra-ui/react";
-import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { FaqAccordion, FaqAccordionProps } from "@querateam/qui-react";
+import type { Meta, StoryObj } from "@storybook/react";
+import { FaqAccordion, FaqAccordionProps } from "./FaqAccordion";
 
-export default {
-  title: "Components/FaqAccordion",
+const meta: Meta<typeof FaqAccordion> = {
   component: FaqAccordion,
+  parameters: {
+    controls: {
+      exclude: /.*/g,
+    },
+  },
   decorators: [
     (Story) => (
       <Card>
@@ -16,7 +20,9 @@ export default {
       </Card>
     ),
   ],
-} as ComponentMeta<typeof FaqAccordion>;
+};
+
+type Story = StoryObj<typeof FaqAccordion>;
 
 const SampleFAQItems: FaqAccordionProps["faqItems"] = [
   {
@@ -56,4 +62,8 @@ const SampleFAQItems: FaqAccordionProps["faqItems"] = [
   },
 ];
 
-export const Base: ComponentStory<typeof FaqAccordion> = (args) => <FaqAccordion faqItems={SampleFAQItems} {...args} />;
+export const Primary: Story = {
+  args: { faqItems: SampleFAQItems, fluid: true, htmlSupport: false },
+};
+
+export default meta;

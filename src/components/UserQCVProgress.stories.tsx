@@ -1,22 +1,33 @@
 import * as React from "react";
-import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { UserQCVProgress } from "@querateam/qui-react";
+import { StoryObj, Meta } from "@storybook/react";
+import { UserQCVProgress } from "./UserQCVProgress";
 
-export default {
-  title: "components/UserQCVProgress",
+const meta: Meta<typeof UserQCVProgress> = {
   component: UserQCVProgress,
-  argTypes: {
-    progress: {
-      type: "number",
-      defaultValue: 40,
-    },
-    isMobile: {
-      type: "boolean",
-      defaultValue: "false",
+  parameters: {
+    controls: {
+      exclude: /(name)|(avatar)/g,
     },
   },
-} as ComponentMeta<typeof UserQCVProgress>;
+};
 
-export const Base: ComponentStory<typeof UserQCVProgress> = (args) => (
-  <UserQCVProgress avatar="/quera-core-ui/images/quera.png" name="کوئرا" {...args} />
-);
+export const Primary: StoryObj<typeof UserQCVProgress> = {
+  argTypes: {
+    progress: {
+      control: {
+        type: "number",
+      },
+    },
+    isMobile: {
+      control: { type: "boolean" },
+    },
+  },
+  args: {
+    progress: 40,
+    isMobile: false,
+    avatar: "/images/quera.png",
+    name: "Quera",
+  },
+};
+
+export default meta;

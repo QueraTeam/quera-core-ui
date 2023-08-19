@@ -58,7 +58,7 @@ export const SignInModalProvider = ({ children }: { children: React.ReactNode })
           <ModalOverlay />
           <ModalContent>
             <ModalBody p={6}>
-              لطفاً ابتدا وارد حساب کاربری خود شوید.
+              <p dir="rtl">لطفاً ابتدا وارد حساب کاربری خود شوید.</p>
               <VStack align="stretch" mt={4}>
                 <Button as="a">ورود/عضویت با ایمیل و گذرواژه</Button>
                 <SocialLoginButton name="گوگل" icon={mdiGoogle} colorScheme="red" />

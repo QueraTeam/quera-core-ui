@@ -1,7 +1,8 @@
 import * as React from "react";
 import { Box, Tooltip, BoxProps, useColorModeValue } from "@chakra-ui/react";
 
-export type HiringCompanyLogoBorderType = "default" | "none" | "fair" | "matching";
+export const borderTypeValues = ["default", "none", "fair", "matching"] as const;
+export type HiringCompanyLogoBorderType = (typeof borderTypeValues)[number];
 export interface HiringCompanyLogoProps extends BoxProps {
   src: string;
   name: string;

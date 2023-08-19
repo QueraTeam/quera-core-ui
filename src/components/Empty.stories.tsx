@@ -1,24 +1,33 @@
 import * as React from "react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { VStack } from "@chakra-ui/react";
-import { ComponentMeta, ComponentStory } from "@storybook/react";
-import NextImage from "next/image";
 import { Empty } from "./Empty";
 
-export default {
-  title: "components/Empty",
+const meta: Meta<typeof Empty> = {
   component: Empty,
-} as ComponentMeta<typeof Empty>;
+  parameters: {
+    controls: {
+      exclude: /emptyImage|(as)|(_.*)/g,
+    },
+  },
+};
 
-export const Base: ComponentStory<typeof Empty> = () => (
-  <VStack>
-    {(["sm", "md", "lg"] as const).map((size) => (
-      <Empty
-        size={size}
-        message="گشتم نبود، نگرد نیست!"
-        emptyImage={
-          <NextImage src="/quera-core-ui/images/empty.png" alt="Not found" width={300} height={256} quality={90} />
-        }
-      />
-    ))}
-  </VStack>
-);
+type Story = StoryObj<typeof Empty>;
+
+export const Primary: Story = {
+  render: ({ ...args }) => (
+    <VStack>
+      <Empty emptyImage={<img src="/images/empty.png" alt="Not found" width={300} height={256} />} {...args} />
+    </VStack>
+  ),
+  argTypes: {
+    size: {
+      options: ["sm", "md", "lg"],
+    },
+  },
+  args: {
+    message: "گشتم نبود، نگرد نیست!",
+  },
+};
+
+export default meta;

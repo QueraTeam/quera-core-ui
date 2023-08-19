@@ -1,21 +1,28 @@
 import * as React from "react";
+import type { Meta, StoryObj } from "@storybook/react";
+import { Box, Text } from "@chakra-ui/react";
 
-import { Box, Button, Text } from "@chakra-ui/react";
-import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { useState } from "react";
-import { FadedBox } from "@querateam/qui-react";
+import { FadedBox } from "./Faded";
 
-export default {
-  title: "components/FadedBox",
+const meta: Meta<typeof FadedBox> = {
   component: FadedBox,
-} as ComponentMeta<typeof FadedBox>;
+};
 
-export const Base: ComponentStory<typeof FadedBox> = () => {
-  const [isFaded, setIsFaded] = useState(true);
+type Story = StoryObj<typeof FadedBox>;
 
-  return (
+export const Primary: Story = {
+  args: {
+    fadedMaxHeight: 100,
+    fade: true,
+  },
+  argTypes: {
+    fadedMaxHeight: {
+      type: "number",
+    },
+  },
+  render: ({ ...args }) => (
     <Box>
-      <FadedBox fade={isFaded} fadedMaxHeight={100}>
+      <FadedBox {...args}>
         <Text>
           لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون
           بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع
@@ -34,9 +41,8 @@ export const Base: ComponentStory<typeof FadedBox> = () => {
           تمام
         </Text>
       </FadedBox>
-      <Button colorScheme="brand" onClick={() => setIsFaded(!isFaded)}>
-        نمایش {isFaded ? "بیشتر" : "کمتر"}
-      </Button>
     </Box>
-  );
+  ),
 };
+
+export default meta;

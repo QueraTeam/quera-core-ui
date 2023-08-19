@@ -1,15 +1,35 @@
 import * as React from "react";
-import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { StoryObj, Meta } from "@storybook/react";
 import { HStack } from "@chakra-ui/react";
-import { SocialNetworkIcon } from "@querateam/qui-react";
+import { SocialNetworkIcon } from "./SocialNetworkIcon";
 
-export default {
-  title: "Foundation/SocialNetworkIcon",
+const meta: Meta<typeof SocialNetworkIcon> = {
   component: SocialNetworkIcon,
+  parameters: {
+    controls: {
+      exclude: /(url)|(_.*)|(css)/g,
+    },
+  },
+  decorators: [
+    (Story) => (
+      <HStack spacing={6} align="center" justify="center" minH={150}>
+        <Story />
+      </HStack>
+    ),
+  ],
+};
+
+export const Primary: StoryObj<typeof SocialNetworkIcon> = {
   args: {
     boxSize: 24,
+    url: "#",
+    type: "github",
   },
   argTypes: {
+    type: {
+      options: ["linkedin", "facebook", "github", "twitter", "instagram", "youtube", "google plus"],
+      control: { type: "select" },
+    },
     boxSize: {
       control: {
         type: "number",
@@ -21,12 +41,6 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof SocialNetworkIcon>;
+};
 
-export const Base: ComponentStory<typeof SocialNetworkIcon> = (args) => (
-  <HStack spacing={6} align="center" justify="center" minH={150}>
-    {(["linkedin", "facebook", "github", "twitter", "instagram", "youtube", "google plus"] as const).map((type) => (
-      <SocialNetworkIcon {...args} type={type} url="https://instagram.com/quera.ir" key={type} />
-    ))}
-  </HStack>
-);
+export default meta;

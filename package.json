@@ -1,5 +1,5 @@
 {
-  "name": "@querateam/qui-storybook",
+  "name": "@querateam/qui",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
@@ -11,9 +11,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "dev:sb": "start-storybook --no-manager-cache -p 6006",
-    "build:sb": "build-storybook -o dist",
-    "build": "tsc"
+    "build": "tsc",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "keywords": [
     "chakra-ui",
@@ -43,6 +43,15 @@
     "schema-dts": "^1.1.2"
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^7.3.1",
+    "@storybook/addon-essentials": "^7.3.0",
+    "@storybook/addon-interactions": "^7.3.0",
+    "@storybook/addon-links": "^7.3.0",
+    "@storybook/addon-onboarding": "^1.0.8",
+    "@storybook/blocks": "^7.3.0",
+    "@storybook/react": "^7.3.0",
+    "@storybook/react-vite": "^7.3.0",
+    "@storybook/testing-library": "^0.2.0",
     "@typescript-eslint/eslint-plugin": "^5.11.0",
     "@typescript-eslint/parser": "^5.11.0",
     "@vitejs/plugin-react": "^3.1.0",
@@ -57,7 +66,7 @@
     "eslint-plugin-storybook": "^0.6.11",
     "file-loader": "^6.2.0",
     "prettier": "^3.0.1",
-    "storybook-addon-mock": "^3.2.0",
-    "typescript": "^4.8.4",
+    "storybook": "^7.3.0",
+    "typescript": "^4.8.4"
   }
 }

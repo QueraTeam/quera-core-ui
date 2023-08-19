@@ -15,7 +15,7 @@ import {
   Stack,
   Textarea,
   Box,
-  useToast,
+  UseDisclosureReturn,
   Radio,
   RadioGroup,
   VStack,
@@ -25,10 +25,16 @@ import {
   FormHelperText,
   Skeleton,
 } from "@chakra-ui/react";
-import { useState, createContext, useContext, Dispatch, SetStateAction } from "react";
+import { useState, createContext, useContext, Dispatch, SetStateAction, useEffect } from "react";
 import { mdiFlag } from "@mdi/js";
-import { fetchReportIssues, reportAction, ReportIssuesType } from "../api/report";
 import { MdIcon } from "./MdIcon";
+
+export type ReportIssuesType = {
+  id: number;
+  text: string;
+  children: ReportIssuesType[];
+  is_selectable: boolean;
+};
 
 export enum ReportRecipient {
   User = "user",
@@ -106,9 +112,8 @@ const ChoiceItem = ({ choice }: { choice: ReportIssuesType }) => {
   );
 };
 
-const ChoiceList = ({ isLoaded }: { isLoaded: boolean }) => {
+const ChoiceList = ({ isLoading }: { isLoading: boolean }) => {
   const { formState, setFormState } = useContext(FormContext);
-
   const onClick = (e) => {
     setFormState({
       ...formState,
@@ -123,7 +128,7 @@ const ChoiceList = ({ isLoaded }: { isLoaded: boolean }) => {
       <FormHelperText>
         لطفاً نزدیک‌‌ترین گزینه را انتخاب کنید تا ما هر چه سریع‌تر و دقیق‌تر مشکل را بررسی کنیم.
       </FormHelperText>
-      <Skeleton isLoaded={isLoaded}>
+      <Skeleton isLoaded={!isLoading}>
         <Box
           px={[3, null, 6]}
           py={[0, null, 1]}
@@ -155,121 +160,43 @@ interface ReportButtonProps extends ButtonProps {
     recipient_slug: ReportRecipient;
     identifier: number | string;
   };
+  modalDisclosure: Pick<UseDisclosureReturn, "isOpen" | "onOpen" | "onClose">;
   isReported: boolean;
-  onModalClose: () => void;
-  fetchURL: string;
-  postURL: string;
+  isFetching: boolean;
+  isSubmitting: boolean;
+  onSubmit: () => void;
+  reportIssues: ReportIssuesType[];
   userIsAuthenticated?: boolean;
   onUnauthenticatedUser?: () => void;
+  mt?: number;
 }
 
 export const ReportButton = ({
   target,
   isReported,
-  onModalClose,
-  fetchURL,
-  postURL,
-  onUnauthenticatedUser = undefined,
+  isFetching,
+  isSubmitting,
+  onSubmit,
+  modalDisclosure,
+  reportIssues,
+  onUnauthenticatedUser = () => null,
   userIsAuthenticated = false,
+  mt = 4,
 }: ReportButtonProps) => {
-  const toast = useToast();
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const { isOpen, onClose, onOpen } = useDisclosure();
-  const [formState, setFormState] = useState<FormDataType>(initialFormState);
-  const [fetchedIssuesType, setFetchedIssuesType] = useState<string>(null);
-
-  const updateReportIssues = async () => {
-    if (fetchedIssuesType === target.recipient_slug) return;
-    await fetchReportIssues(target.recipient_slug, fetchURL).then((response) =>
-      setFormState({ ...formState, choices: response }),
-    );
-    setFetchedIssuesType(target.recipient_slug);
-  };
-
-  const closeModalAndReload = () => {
-    setFetchedIssuesType(null);
-    onModalClose();
-  };
-
-  const onSubmit = () => {
-    const exitWithErr = (message) => setFormState({ ...formState, selectError: message });
-    if (formState.checkedRadio === null) {
-      exitWithErr("حداقل  باید یکی از مشکلات انتخاب شود!");
-      return;
-    }
-    if (
-      formState.checkedIssues.length === 0 &&
-      formState.choices.filter((c) => c.id.toString() === formState.checkedRadio)[0].children.length > 0
-    ) {
-      exitWithErr("لطفاً یکی از زیرمجموعه‌ها را انتخاب کنید.");
-      return;
-    }
-    setIsLoading(true);
-    reportAction(
-      target.recipient_slug,
-      target.identifier,
-      formState.checkedIssues.length === 0 ? [formState.checkedRadio] : formState.checkedIssues,
-      formState.description,
-      postURL,
-    )
-      .then((resp) => {
-        if (resp.status === 201) {
-          toast({
-            title: "موفقیت‌آمیز بود",
-            description: "گزارش شما با موفقیت ثبت شد.",
-            status: "success",
-            duration: 5000,
-            isClosable: true,
-          });
-          closeModalAndReload();
-        }
-      })
-      .catch((err) => {
-        if (err.response.status === 400) {
-          toast({
-            title: "خطایی رخ داد!",
-            description: err.response.data.non_field_errors[0],
-            status: "error",
-            duration: 10000,
-            isClosable: true,
-          });
-        } else if (err.response.status === 429) {
-          toast({
-            title: "خطایی رخ داده!",
-            description: err.response.data.detail,
-            status: "error",
-            duration: 10000,
-            isClosable: true,
-          });
-        } else {
-          toast({
-            title: "خطایی رخ داد!",
-            description: "لطفا به پشتیبانی کوئرا گزارش دهید.",
-            status: "error",
-            duration: 5000,
-            isClosable: true,
-          });
-        }
-      })
-      .finally(() => {
-        setIsLoading(false);
-        setFormState(initialFormState);
-        onClose();
-      });
-  };
+  const [formState, setFormState] = useState<FormDataType>({ ...initialFormState, choices: reportIssues });
+  const { isOpen, onClose, onOpen } = modalDisclosure;
 
   return (
     <>
       <Button
-        mt={4}
+        mt={mt}
         fontSize="sm"
         variant="ghost"
         leftIcon={<MdIcon icon={mdiFlag} />}
         colorScheme="gray"
         onClick={() => {
-          if (onUnauthenticatedUser && !userIsAuthenticated) onUnauthenticatedUser();
+          if (!userIsAuthenticated) onUnauthenticatedUser();
           else {
-            updateReportIssues();
             onOpen();
           }
         }}
@@ -281,7 +208,7 @@ export const ReportButton = ({
       </Button>
       <Modal isOpen={isOpen} size={["full", "2xl"]} onClose={onClose} closeOnOverlayClick>
         <ModalOverlay />
-        <ModalContent my={[0, 16]} maxH={["100%", "unset"]} overflowY="auto">
+        <ModalContent my={[0, 16]} maxH={["100%", "unset"]} overflowY="auto" dir="rtl">
           <ModalHeader borderBottom="1px" borderColor="inherit">{`گزارش اشکال ${
             RECIPIENT_TO_LABEL[target.recipient_slug]
           } "${target.name}"`}</ModalHeader>
@@ -290,7 +217,7 @@ export const ReportButton = ({
             {/* eslint-disable-next-line react/jsx-no-constructed-context-values */}
             <FormContext.Provider value={{ formState, setFormState }}>
               <VStack align="stretch" spacing={6}>
-                <ChoiceList isLoaded={fetchedIssuesType !== null} />
+                <ChoiceList isLoading={isFetching} />
                 <FormControl>
                   <FormLabel>توضیحات بیشتر</FormLabel>
                   <Textarea
@@ -308,7 +235,7 @@ export const ReportButton = ({
               انصراف
             </Button>
             {formState.choices.length > 0 && (
-              <Button ms={3} onClick={onSubmit} isLoading={isLoading}>
+              <Button ms={3} onClick={onSubmit} isLoading={isSubmitting}>
                 تایید
               </Button>
             )}

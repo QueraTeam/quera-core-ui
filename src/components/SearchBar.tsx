@@ -2,7 +2,7 @@ import * as React from "react";
 import { Input, InputGroup, InputRightElement, Spinner, Card } from "@chakra-ui/react";
 
 import { mdiMagnify, mdiClose } from "@mdi/js";
-import { useDebouncedValue } from "src/hooks/useDebouncedValue";
+import { useDebouncedValue } from "../hooks/useDebouncedValue";
 import { MdIcon } from "./MdIcon";
 
 interface SearchBarIconProps {

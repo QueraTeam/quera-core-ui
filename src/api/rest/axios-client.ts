@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getBrowserCookie } from "src/utils/cookie";
+import { getBrowserCookie } from "../../utils/cookie";
 
 export const axiosClient = axios.create({
   // baseURL: "http://localhost:8000",

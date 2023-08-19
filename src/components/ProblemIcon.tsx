@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Tooltip, CircularProgress } from "@chakra-ui/react";
-import { persianDigits } from "src/utils/string";
+import { persianDigits } from "../utils/string";
 
 export const ProblemIcon = ({ solvedPercent }: { solvedPercent: number }) => {
   let tooltipLabel;

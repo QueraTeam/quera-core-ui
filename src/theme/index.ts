@@ -1,10 +1,4 @@
-import {
-  extendTheme,
-  withDefaultColorScheme,
-  ColorMode,
-  ThemeDirection,
-  Tooltip,
-} from "@chakra-ui/react";
+import { extendTheme, withDefaultColorScheme, ColorMode, ThemeDirection, Tooltip } from "@chakra-ui/react";
 import { Steps } from "./components/steps";
 
 // Global style overrides
@@ -53,7 +47,7 @@ const overrides = {
     Textarea,
     Checkbox,
     Breadcrumb,
-    // Card,
+    Card,
     Switch,
     Pagination,
     Button,
@@ -71,7 +65,4 @@ Tooltip.defaultProps = {
   placement: "top",
 };
 
-export const theme = extendTheme(
-  overrides,
-  withDefaultColorScheme({ colorScheme: "brand" })
-);
+export const theme = extendTheme(overrides, withDefaultColorScheme({ colorScheme: "brand" }));

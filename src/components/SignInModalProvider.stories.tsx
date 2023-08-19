@@ -1,11 +1,11 @@
 import * as React from "react";
 
-import { Meta } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react";
 import { Button, Card, CardBody, HStack } from "@chakra-ui/react";
-import { SignInModalProvider, useSignInModal } from "@querateam/qui-react";
+import { SignInModalProvider, useSignInModal } from "./SignInModalProvider";
 
-export default {
-  title: "Foundation/SignIn Modal",
+const meta: Meta<typeof SignInModalProvider> = {
+  title: "Components/SignIn Modal",
   component: SignInModalProvider,
   decorators: [
     (Story) => (
@@ -14,9 +14,9 @@ export default {
       </SignInModalProvider>
     ),
   ],
-} as Meta;
+};
 
-export const Base = () => {
+const SignInModalWrapper = () => {
   const signInModal = useSignInModal();
 
   return (
@@ -29,3 +29,9 @@ export const Base = () => {
     </Card>
   );
 };
+
+export const Primary: StoryObj<typeof SignInModalProvider> = {
+  render: () => <SignInModalWrapper />,
+};
+
+export default meta;

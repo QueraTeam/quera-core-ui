@@ -3,7 +3,7 @@ import { Button, Flex, Tooltip, useTheme, useStyleConfig, HTMLChakraProps, Butto
 import { range } from "lodash";
 
 import { mdiChevronLeft, mdiChevronRight } from "@mdi/js";
-import { persianDigits } from "src/utils/string";
+import { persianDigits } from "../utils/string";
 import { MdIcon } from "./MdIcon";
 import { Card } from "./Card";
 
