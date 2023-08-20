@@ -13,7 +13,7 @@
     "lint:fix": "eslint . --fix",
     "build": "tsc",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build -o sb_dist"
   },
   "keywords": [
     "chakra-ui",
