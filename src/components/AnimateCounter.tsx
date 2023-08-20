@@ -1,7 +1,7 @@
 import * as React from "react";
 import { persianDigits } from "../utils/string";
 
-const AnimateCounter = ({ value, time }: { value: string; time: number }) => {
+export const AnimateCounter = ({ value, time }: { value: string; time: number }) => {
   const [timer, setTimer] = React.useState<string>("0");
   React.useEffect(() => {
     let start = 0;
@@ -19,5 +19,3 @@ const AnimateCounter = ({ value, time }: { value: string; time: number }) => {
   }, [time, value]);
   return <>{persianDigits(timer)}</>;
 };
-
-export { AnimateCounter };

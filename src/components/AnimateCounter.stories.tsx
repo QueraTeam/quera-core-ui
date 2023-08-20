@@ -1,7 +1,9 @@
 import * as React from "react";
 
 import { Card, CardBody, Heading, HStack } from "@chakra-ui/react";
+import { within, userEvent } from "@storybook/testing-library";
 
+import { expect } from "@storybook/jest";
 import type { Meta, StoryObj } from "@storybook/react";
 import { AnimateCounter } from "./AnimateCounter";
 

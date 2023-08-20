@@ -42,7 +42,7 @@ export { Select } from "./components/Select";
 export { ShareLink } from "./components/ShareLink";
 export { SidebarLabel, SidebarRow, SidebarValue } from "./components/Sidebar";
 export { SignInModalDisclosureContext, SignInModalProvider, useSignInModal } from "./components/SignInModalProvider";
-export { SocialNetworkIcon, type SocialNetworkType } from "./components/SocialNetworkIcon";
+export { SocialNetworkIcon, type SocialNetworkTypes } from "./components/SocialNetworkIcon";
 export { FadedTechnologyLabels, TechnologyLabel } from "./components/TechnologyLabel";
 export { UploadResume, type UploadResumeProps } from "./components/UploadResume";
 export { UserAvatar, type UserAvatarProps } from "./components/UserAvatar";

@@ -16,5 +16,5 @@
     "esModuleInterop": true
   },
   "include": ["src/**/*", ".storybook/*"],
-  "exclude": ["node_modules",  "out", "storybook-static", "src/stories/**"]
+  "exclude": ["node_modules",  "out", "storybook-static"]
 }

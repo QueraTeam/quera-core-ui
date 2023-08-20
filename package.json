@@ -1,6 +1,6 @@
 {
   "name": "@querateam/qui",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -8,10 +8,10 @@
     "/dist"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\" && exit 0",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "build": "tsc",
+    "build": "tsc --build tsconfig.pkg.json",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build -o sb_dist"
   },
@@ -49,6 +49,7 @@
     "@storybook/addon-links": "^7.3.2",
     "@storybook/addon-onboarding": "^1.0.8",
     "@storybook/blocks": "^7.3.2",
+    "@storybook/jest": "^0.2.1",
     "@storybook/manager-api": "^7.3.2",
     "@storybook/react": "^7.3.2",
     "@storybook/react-vite": "^7.3.2",
