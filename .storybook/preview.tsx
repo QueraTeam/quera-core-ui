@@ -20,7 +20,6 @@ const preview: Preview = {
           sx={{
             direction: "rtl",
           }}
-          dir="rtl"
         >
           <Story />
         </Container>

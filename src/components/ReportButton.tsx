@@ -1,6 +1,5 @@
 import * as React from "react";
 import {
-  useDisclosure,
   Button,
   ButtonProps,
   Modal,
@@ -15,7 +14,6 @@ import {
   Stack,
   Textarea,
   Box,
-  UseDisclosureReturn,
   Radio,
   RadioGroup,
   VStack,
@@ -25,7 +23,7 @@ import {
   FormHelperText,
   Skeleton,
 } from "@chakra-ui/react";
-import { useState, createContext, useContext, Dispatch, SetStateAction, useEffect } from "react";
+import { createContext, useContext, Dispatch, SetStateAction } from "react";
 import { mdiFlag } from "@mdi/js";
 import { MdIcon } from "./MdIcon";
 
@@ -50,7 +48,7 @@ const RECIPIENT_TO_LABEL = {
   [ReportRecipient.Problem]: "سؤال",
 };
 
-type FormDataType = {
+export type FormDataType = {
   choices: ReportIssuesType[];
   selectError: string;
   checkedIssues: number[];
@@ -58,7 +56,7 @@ type FormDataType = {
   description: string;
 };
 
-const initialFormState: FormDataType = {
+export const initialFormState: FormDataType = {
   choices: [],
   checkedIssues: [],
   checkedRadio: null,
@@ -114,6 +112,7 @@ const ChoiceItem = ({ choice }: { choice: ReportIssuesType }) => {
 
 const ChoiceList = ({ isLoading }: { isLoading: boolean }) => {
   const { formState, setFormState } = useContext(FormContext);
+
   const onClick = (e) => {
     setFormState({
       ...formState,
@@ -160,88 +159,78 @@ interface ReportButtonProps extends ButtonProps {
     recipient_slug: ReportRecipient;
     identifier: number | string;
   };
-  modalDisclosure: Pick<UseDisclosureReturn, "isOpen" | "onOpen" | "onClose">;
   isReported: boolean;
-  isFetching: boolean;
+  onButtonClick: () => void;
+  isOpen: boolean;
+  onClose: () => void;
   isSubmitting: boolean;
+  isFetching: boolean;
+  formState: FormDataType;
+  setFormState: Dispatch<SetStateAction<FormDataType>>;
   onSubmit: () => void;
-  reportIssues: ReportIssuesType[];
-  userIsAuthenticated?: boolean;
-  onUnauthenticatedUser?: () => void;
-  mt?: number;
 }
 
 export const ReportButton = ({
   target,
   isReported,
-  isFetching,
+  onButtonClick,
+  isOpen,
+  onClose,
   isSubmitting,
+  isFetching,
+  formState,
+  setFormState,
   onSubmit,
-  modalDisclosure,
-  reportIssues,
-  onUnauthenticatedUser = () => null,
-  userIsAuthenticated = false,
-  mt = 4,
-}: ReportButtonProps) => {
-  const [formState, setFormState] = useState<FormDataType>({ ...initialFormState, choices: reportIssues });
-  const { isOpen, onClose, onOpen } = modalDisclosure;
-
-  return (
-    <>
-      <Button
-        mt={mt}
-        fontSize="sm"
-        variant="ghost"
-        leftIcon={<MdIcon icon={mdiFlag} />}
-        colorScheme="gray"
-        onClick={() => {
-          if (!userIsAuthenticated) onUnauthenticatedUser();
-          else {
-            onOpen();
-          }
-        }}
-        isDisabled={isReported}
-      >
-        {isReported
-          ? `${RECIPIENT_TO_LABEL[target.recipient_slug]} گزارش شده است.`
-          : `گزارش اشکال ${RECIPIENT_TO_LABEL[target.recipient_slug]}`}
-      </Button>
-      <Modal isOpen={isOpen} size={["full", "2xl"]} onClose={onClose} closeOnOverlayClick>
-        <ModalOverlay />
-        <ModalContent my={[0, 16]} maxH={["100%", "unset"]} overflowY="auto" dir="rtl">
-          <ModalHeader borderBottom="1px" borderColor="inherit">{`گزارش اشکال ${
-            RECIPIENT_TO_LABEL[target.recipient_slug]
-          } "${target.name}"`}</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody bg="gray.50" p={6}>
-            {/* eslint-disable-next-line react/jsx-no-constructed-context-values */}
-            <FormContext.Provider value={{ formState, setFormState }}>
-              <VStack align="stretch" spacing={6}>
-                <ChoiceList isLoading={isFetching} />
-                <FormControl>
-                  <FormLabel>توضیحات بیشتر</FormLabel>
-                  <Textarea
-                    placeholder="توضیحات بیشتری در مورد مشکل را بنویسید."
-                    value={formState.description}
-                    onChange={(e) => setFormState({ ...formState, description: e.target.value })}
-                    colorScheme="brand"
-                  />
-                </FormControl>
-              </VStack>
-            </FormContext.Provider>
-          </ModalBody>
-          <ModalFooter>
-            <Button variant="outline" colorScheme="gray" onClick={onClose}>
-              انصراف
+}: ReportButtonProps) => (
+  <>
+    <Button
+      mt={4}
+      fontSize="sm"
+      variant="ghost"
+      leftIcon={<MdIcon icon={mdiFlag} />}
+      colorScheme="gray"
+      onClick={onButtonClick}
+      isDisabled={isReported}
+    >
+      {isReported
+        ? `${RECIPIENT_TO_LABEL[target.recipient_slug]} گزارش شده است.`
+        : `گزارش اشکال ${RECIPIENT_TO_LABEL[target.recipient_slug]}`}
+    </Button>
+    <Modal isOpen={isOpen} size={["full", "2xl"]} onClose={onClose} closeOnOverlayClick>
+      <ModalOverlay />
+      <ModalContent my={[0, 16]} maxH={["100%", "unset"]} overflowY="auto">
+        <ModalHeader borderBottom="1px" borderColor="inherit">{`گزارش اشکال ${
+          RECIPIENT_TO_LABEL[target.recipient_slug]
+        } "${target.name}"`}</ModalHeader>
+        <ModalCloseButton />
+        <ModalBody bg="gray.50" p={6}>
+          {/* eslint-disable-next-line react/jsx-no-constructed-context-values */}
+          <FormContext.Provider value={{ formState, setFormState }}>
+            <VStack align="stretch" spacing={6}>
+              <ChoiceList isLoading={isFetching} />
+              <FormControl>
+                <FormLabel>توضیحات بیشتر</FormLabel>
+                <Textarea
+                  placeholder="توضیحات بیشتری در مورد مشکل را بنویسید."
+                  value={formState.description}
+                  onChange={(e) => setFormState({ ...formState, description: e.target.value })}
+                  colorScheme="brand"
+                />
+              </FormControl>
+            </VStack>
+          </FormContext.Provider>
+        </ModalBody>
+        <ModalFooter>
+          <Button variant="outline" colorScheme="gray" onClick={onClose}>
+            انصراف
+          </Button>
+          {formState.choices.length > 0 && (
+            <Button ms={3} onClick={onSubmit} isLoading={isSubmitting}>
+              تایید
             </Button>
-            {formState.choices.length > 0 && (
-              <Button ms={3} onClick={onSubmit} isLoading={isSubmitting}>
-                تایید
-              </Button>
-            )}
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
-    </>
-  );
-};
+          )}
+        </ModalFooter>
+      </ModalContent>
+    </Modal>
+  </>
+);
