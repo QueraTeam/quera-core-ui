@@ -47,7 +47,7 @@ export { FadedTechnologyLabels, TechnologyLabel } from "./components/TechnologyL
 export { UploadResume, type UploadResumeProps } from "./components/UploadResume";
 export { UserAvatar, type UserAvatarProps } from "./components/UserAvatar";
 export { UserQCVProgress, type UserQCVProgressProps } from "./components/UserQCVProgress";
-export { ReportButton, type ReportRecipient, type FormDataType, initialFormState } from "./components/ReportButton";
+export { ReportButton, ReportRecipient, type FormDataType, initialFormState } from "./components/ReportButton";
 
 // hooks exports
 export { useDebouncedValue } from "./hooks/useDebouncedValue";
