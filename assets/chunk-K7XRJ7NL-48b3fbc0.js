@@ -1,0 +1,2 @@
+import{u as n}from"./chunk-TKWR62NH-579b21da.js";import{f as t,o as m,c,a as l}from"./chunk-ZJJGQIVY-893c3ba0.js";import{j as f}from"./chunk-UQDW7KKV-fae5f941.js";var k=t(function(a,r){const o=n("Link",a),{className:e,isExternal:s,...i}=m(a);return f(c.a,{target:s?"_blank":void 0,rel:s?"noopener":void 0,ref:r,className:l("chakra-link",e),...i,__css:o})});k.displayName="Link";export{k as L};
+//# sourceMappingURL=chunk-K7XRJ7NL-48b3fbc0.js.map

@@ -1,0 +1,2 @@
+import{f as c,c as p}from"./chunk-ZJJGQIVY-893c3ba0.js";import{j as m}from"./chunk-UQDW7KKV-fae5f941.js";var d=c(function(s,r){const{direction:e,align:i,justify:a,wrap:t,basis:f,grow:l,shrink:o,...n}=s,x={display:"flex",flexDirection:e,alignItems:i,justifyContent:a,flexWrap:t,flexBasis:f,flexGrow:l,flexShrink:o};return m(p.div,{ref:r,__css:x,...n})});d.displayName="Flex";export{d as F};
+//# sourceMappingURL=chunk-KRPLQIP4-87875c98.js.map
