@@ -1,6 +1,6 @@
 {
   "name": "@querateam/qui",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "",
   "sideEffects": false,
   "main": "dist/index.js",
